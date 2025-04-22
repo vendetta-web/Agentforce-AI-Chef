@@ -1,0 +1,57 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-22-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <form class="slds-box slds-p-around_medium">
+        <h1 class="slds-text-heading_large slds-p-around_small">Make your own recipe using Agentforce</h1>
+        <lightning-textarea 
+            label="Ingredients (comma separated)"
+            placeholder="e.g., chicken breast, bell peppers, onions etc"
+            required 
+            value={formData.ingredients}
+            name="ingredients"
+            onchange={handleChange}></lightning-textarea>
+
+        <lightning-combobox
+            label="Dietary Restrictions"
+            placeholder="Select restriction"
+            name="dietaryRestrictions"
+             value={formData.dietaryRestrictions}
+             options={dietaryOptions}
+             required
+             onchange={handleChange}
+        ></lightning-combobox>
+
+        <lightning-combobox
+            label="Meal Type"
+            placeholder="Select meal type"
+            name="mealType"
+            value={formData.mealType}
+            options={mealTypeOptions}
+            required
+            onchange={handleChange}
+        ></lightning-combobox>
+
+        <lightning-input 
+            type="number" 
+            label="Servings"
+            name="servings"
+            required
+            value={formData.servings}
+            onchange={handleChange}>
+        </lightning-input>
+        <div class="slds-m-top_medium">
+        <lightning-button
+        label="Generate Recipes"
+        variant="brand"
+        icon-name="utility:recipe"
+        stretch
+         onclick={generateRecipes}
+        ></lightning-button>
+    </div>
+    </form>
+</template>
